@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="a">
+    <span id="b"></span>
+    <script>
+        //  本地存储
+        // cookie 存储大小最大为4k
+        // localStorage \ sessionStorage(当前会话有效，页面或浏览器关闭则销毁) 存储大小最大为5M
+        function bubbleSort(arr) {
+            for(var i = 0; i < arr.length; i++) {
+                for(var j = 0; j < arr.length; j++) {
+                    if(arr[i] < arr[j]) {
+                        var temp = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        var arr = [524, 684, 5, 69, 15];
+        bubbleSort(arr)   // 结果为[5, 15, 69, 524, 684]       
+        let newArr = JSON.Parse(JSON.Stringify(oldArr))
+        let newArr = [...oldArr]     
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+阿亮
+第三方包出现问题用qq找APP签名 qq  2580274006   liyue0.369
+制作APP网站 https://www.apicloud.com/signin      15652858719    anyway127
+6321
+苹果电脑密码  anyway
+
+把一个项目加入webpack
+
+第一步，在当前项目根目录下执行npm init(没有安装npm的先安装)，一直回车初始化一个package.json文件
+第二步，在package.json文件下面添加
+  "devDependencies": {
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+执行npm install 安装组件
+在scripts下添加"start":"node_modules/.bin/webpack-dev-server"
+方便后期运行（直接执行 npm start）
+第三步，根目录创建webpack.config.js文件添加文件内容：
+var path = require('path')
+module.exports = {
+    devServer: {
+        contentBase: path.join(__dirname, "web"), //web为当前目录下的要访问web站点路径 可以是多级子目录，要访问当前根目录可以注释这行
+        proxy: { //接口转发
+            '/all': {
+                target: 'http://www.newbc.com', //转发的域名
+                changeOrigin: true,
+                secure: false, //https必须加这个
+                pathRewrite: {
+                    '^/all': '/all'	//转发的api
+                }
+            }
+        }
+    }
+}
+第四步，配置完成执行npm start 开始调试
+
+新建：.gitignore文件
+.idea
+composer.lock
+*.log
+runtime
+package-lock.json
+package.json
+node_modules
+webpack.config.js
+node_modules
+
+新：（静态文件转发）
+
+var path = require('path')
+var URL="https://www-500w-gray.e2048.com/"; //转发服务器地址
+module.exports = {
+    devServer: {
+        disableHostCheck: true,
+        contentBase: path.join(__dirname, "public"), //web为当前目录下的要访问web站点路径 可以是多级子目录，要访问当前根目录可以注释这行
+        proxy: { //接口转发
+            '/all': {
+                target: URL, //转发的域名
+                // target: 'https://www-xiaojufu-gray.e2048.com/',
+                changeOrigin: true,
+                secure: false,
+                pathRewrite: {
+                    '^/all': '/all',	//转发的api
+                   
+                }
+            },
+            '/admin_static': {
+                target: URL, // 接口的域名
+                secure: false,  // 如果是https接口，需要配置这个参数
+                changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+                pathRewrite: {'^/admin_static': '/admin_static'}  // pathRewrite 来重写地址，将前缀 '/api' 转为 '/'。
+            }
+        }
+    }
+}
+
+
+全民，小大发
+小88，五百万 （欢乐），凤凰，必赢，新五百，小聚富，天美，诚信，幸运，双赢，大众
+
+五百万 （欢乐）：500.227290.com   https://www-500w-gray.e2048.com/          develop-500w
+凤凰（老凤凰）：fh.227290.com      https://www-fenghuang-gray.e2048.com/   develop-fenghuang
+必赢：by.227290.com                          develop-biying
+新五百：n500.227290.com        https://www-nb500w-gray.e2048.com/           develop-nb500w
+小88: x88.227290.com                     https://www-xiao88-gray.e2048.com/         develop-xiao-88
+小聚富（鳳凰）：xjf.227290.com      https://www-xiaojufu-gray.e2048.com/      develop-xiaojufu
+幸运：xy.227290.com                          develop-xingyun
+全民：qm.227290.com                        develop-quanming
+双赢：sy.227290.com                          develop-shuangying
+天美：tm.227290.com                  https://www-tianmei-gray.e2048.com/home/          develop-tianmei
+大众：dz.227290.com        	     https://www-dazhong-gray.e2048.com/       develop-dazhong
+小大发：xdf.227290.com                     develop-xiaodafa
+诚信:   https://cx.227290.com/home/       https://www-chengxin-gray.e2048.com/    develop-chengxin
